@@ -1,0 +1,103 @@
+# public header files (visible to users of this library)
+set(HEADERS
+	All.h
+	AnimationNode.h
+	BendDeformerNode.h
+	BlendPipeNode.h
+	BlendShapeNode.h
+	BulgeNode.h
+	CameraNode.h
+	CheckerNode.h
+	ContrastNode.h
+	#CurveNode.h
+	DeformerNode.h
+	EnvNode.h
+	ExtrudeNode.h
+	FlareDeformerNode.h
+	FogNode.h
+	#GenericNode.h
+	#GeometryDependent.h
+	#GeometryNode.h
+	HelperNodes.h
+	IKHandleNode.h
+	LatticeNode.h
+	LightNode.h
+	MayaColorBalanceNode.h
+	MayaConstraintNode.h
+	MayaDagNode.h
+	MayaEmitterNode.h
+	MayaPlaceTextureNode.h
+	MayaTransformNode.h
+	ParticleNode.h
+	#ProjectionNode.h
+	RampNode.h
+	SamplerInfoNode.h
+	ShaderNode.h
+	SineDeformerNode.h
+	SkinClusterNode.h
+	SquashDeformerNode.h
+	TangentSpaceNode.h
+	TextNode.h
+	TextureBaseNode.h
+	TextureNode.h
+	TransformVectorNode.h
+	TwistDeformerNode.h
+	VertexAnimationNode.h
+	WaveDeformerNode.h
+	WeightedSumNode.h
+)
+
+# source files
+set(FILES
+	All.cpp
+	AnimationNode.cpp
+	BendDeformerNode.cpp
+	BlendPipeNode.cpp
+	BlendShapeNode.cpp
+	BulgeNode.cpp
+	CameraNode.cpp
+	CheckerNode.cpp
+	ContrastNode.cpp
+	#CurveNode.cpp
+	DeformerNode.cpp
+	EnvNode.cpp
+	ExtrudeNode.cpp
+	FlareDeformerNode.cpp
+	FogNode.cpp
+	#GenericNode.cpp
+	#GeometryDependent.cpp
+	#GeometryNode.cpp
+	HelperNodes.cpp
+	IKHandleNode.cpp
+	LatticeNode.cpp
+	LightNode.cpp
+	MayaColorBalanceNode.cpp
+	MayaConstraintNode.cpp
+	MayaDagNode.cpp
+	MayaEmitterNode.cpp
+	MayaPlaceTextureNode.cpp
+	MayaTransformNode.cpp
+	ParticleNode.cpp
+	#ProjectionNode.cpp
+	RampNode.cpp
+	SamplerInfoNode.cpp
+	ShaderNode.cpp
+	SineDeformerNode.cpp
+	SkinClusterNode.cpp
+	SquashDeformerNode.cpp
+	TangentSpaceNode.cpp
+	TextNode.cpp
+	TextureBaseNode.cpp
+	TextureNode.cpp
+	TransformVectorNode.cpp
+	TwistDeformerNode.cpp
+	#VertexAnimationNode.cpp
+	WaveDeformerNode.cpp
+	WeightedSumNode.cpp
+)
+
+# add definitions
+add_definitions(${Nodes_DEFINITIONS})
+
+# add library digiNodes
+CREATE_LIBRARY(digi.Nodes HEADERS ${HEADERS} FILES ${FILES} VERSIONIZE EXPORT Digi)

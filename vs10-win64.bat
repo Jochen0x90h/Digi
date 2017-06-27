@@ -1,0 +1,3 @@
+md build-vs10-win64 || exit /b
+cd build-vs10-win64
+cmake -DENABLE_TESTS:BOOL=ON -DGL_MAJOR=2 -DGL_MINOR=1 -DCMAKE_PREFIX_PATH:PATH="%CMAKE_INSTALL_PATH%\vs10-win64" -DCMAKE_INSTALL_PREFIX:PATH="%CMAKE_INSTALL_PATH%\vs10-win64" -G "Visual Studio 10 Win64" ..\

@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+mkdir -p build-xcode
+cd build-xcode
+cmake -DENABLE_TESTS:BOOL=ON -DGL_MAJOR=2 -DGL_MINOR=1 -DCMAKE_PREFIX_PATH:PATH="$HOME/.local" -DCMAKE_INSTALL_PREFIX:PATH="$HOME/.local" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.8 -G "Xcode" ../

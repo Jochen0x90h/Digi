@@ -1,0 +1,12 @@
+#!/bin/sh
+if [ "$1" == "clean" ]; then
+	cmake --build build-xcode/ --target clean --config Debug
+	cmake --build build-xcode/ --target clean --config Release
+	rm build-xcode/CMakeCache.txt
+else
+	. ./xcode
+	cmake --build . --target ALL_BUILD --config Debug
+	cmake --build . --target install --config Debug
+	cmake --build . --target ALL_BUILD --config Release
+	cmake --build . --target install --config Release
+fi

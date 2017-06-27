@@ -1,0 +1,12 @@
+Version.h
+*.jpg
+*.webm
+*.ogg
+*.json
+*.xml
+*.bin
+*.dat
+*.glsl
+*.js
+*.ll
+build*/

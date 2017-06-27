@@ -1,0 +1,64 @@
+// segment 0x18538067
+// seek-back for length of segment necessary
+
+seekHead optional read(1000) : 0x114D9B74 : struct SeekHead
+{
+	seeks repeated read(1000) : 0x4DBB : struct Seek
+	{
+		seekID write(4) : 0x53AB : uint;
+		seekPosition write(7) : 0x53AC : ulong; // seek-back necessary
+	};
+};
+
+info optional read(1000) : 0x1549A966 : struct Info
+{
+	timeCodeScale write(3) : 0x2AD7B1 : uint = 1000000; // should always be 1000000
+	duration write(8) : 0x4489 : double; // seek-back necessary
+	muxingApp read(100) : 0x4D80 : string;
+	writingApp read(100) : 0x5741 : string;
+};
+
+tracks optional read(1000000) : 0x1654AE6B : struct Tracks
+{
+	trackEntries repeated read(100000) : 0xAE : struct TrackEntry
+	{
+		trackNumber write(1) : 0xD7 : uint;
+		trackUID write(4) : 0x73C5 : uint; // seek-back necessary
+		trackType write(1) : 0x83 : ubyte; // 1 video, 2 audio, 0x11 subtitle
+		codecID read(100) : 0x86 : string;
+		codecPrivate default read(100000) : 0x63A2 : data; // default prevents write of empty codecPrivate that firefox can't parse
+		
+		video optional read(10000) : 0xE0 : struct Video
+		{
+			pixelWidth : 0xB0 : uint;
+			pixelHeight : 0xBA : uint;
+			stereoMode write(1) : 0x53B8 : ubyte;
+			frameRate write(4) : 0x2383E3 : float;
+		};
+		audio optional read(10000) : 0xE1 : struct Audio
+		{
+			channels write(1) : 0x9F : uint = 1;
+			samplingFrequency write(4) : 0xB5 : float = 8000.0f;
+		};
+	};
+};
+
+cues optional read(100000000) : 0x1C53BB6B : struct Cues
+{
+	cuePoints repeated read(10000) : 0xBB : struct CuePoint
+	{
+		timeCode write(4) : 0xB3 : ulong; // firefox can't parse zero length integer
+		cueTrackPositions repeated read(100) : 0xB7 : struct CueTrackPosition
+		{
+			trackNumber write(1) : 0xF7 : uint;
+			clusterPosition : 0xF1 : ulong;
+		};
+		
+	};
+};
+
+cluster optional read(100000000) : 0x1F43B675 : struct Cluster
+{
+	timeCode write(4) : 0xE7 : ulong; // firefox can't parse zero length integer
+	simpleBlocks repeated read(10000000) : 0xA3 : data;
+};

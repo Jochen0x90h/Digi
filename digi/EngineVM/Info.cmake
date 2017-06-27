@@ -1,0 +1,2 @@
+set(EngineVM_DEPENDENCIES Engine LLVMJit)
+set(EngineVM_HAS_INIT_DONE YES)

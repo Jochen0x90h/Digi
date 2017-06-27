@@ -1,0 +1,2 @@
+set(Math_DEPENDENCIES Base)
+set(Math_HAS_INIT_DONE YES)
